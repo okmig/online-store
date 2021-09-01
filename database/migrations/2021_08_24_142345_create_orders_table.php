@@ -15,9 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('order_date');
+            $table->integer('quantity');
             $table->boolean('status');
-            $table->foreignId('customer_id')->constrained('customers');
+            $table->timestamps();
+            $table->foreignId('customer_id')->nullable()->constrained('customers');
         });
     }
 

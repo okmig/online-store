@@ -19,7 +19,8 @@ class CreateContactsTable extends Migration
             $table->string('city');
             $table->integer('postal_code');
             $table->integer('phone');
-            $table->foreignId('customer_id')->constrained('customers');
+            $table->timestamps();
+            $table->foreignId('customer_id')->nullable()->constrained('customers');
         });
     }
 
