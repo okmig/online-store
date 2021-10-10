@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,14 @@ Route::delete('/delete/category/{id}', [DashboardController::class, 'destroyCate
 Route::post('/create/discount', [DashboardController::class, 'storeDiscount']);
 Route::put('/update/discount/{id}', [DashboardController::class, 'updateDiscount']);
 Route::delete('/delete/discount/{id}', [DashboardController::class, 'destroyDiscount']);
+
+Route::get('/auth/login', [AuthController::class, 'login'])->name('auth.login')->middleware('authCheck');
+Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register')->middleware('authCheck');
+Route::post('/auth/save', [AuthController::class, 'save'])->name('auth.save');
+Route::post('/auth/check', [AuthController::class, 'check'])->name('auth.check');
+Route::get('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+Route::get('/user/profile', [ProfileController::class, 'profileShow'])->name('user.profile')->middleware('authCheck');
+Route::post('/user/contact/create/', [ProfileController::class, 'contactCreate'])->name('user.contact.create');
+Route::put('/user/contact/update/{id}', [ProfileController::class, 'contactUpdate'])->name('user.contact.update');
+Route::delete('/user/contact/delete/{id}', [ProfileController::class, 'contactDelete'])->name('user.contact.delete');

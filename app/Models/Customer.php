@@ -10,8 +10,7 @@ class Customer extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'username',
-        'password',
-        'email'
+        'email',
+        'password'
     ];
 }
