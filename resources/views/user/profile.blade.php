@@ -12,6 +12,22 @@
     <title>Profile</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Store</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('user.profile') }}">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('user.orders') }}">Orders</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('auth.logout') }}">Logout</a>
+            </li>
+        </ul>
+    </nav>
     <div class="container mb-4">
         <div class="table-responsive">
             <table class="table">

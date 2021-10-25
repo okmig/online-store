@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://getbootstrap.com.vn/examples/equal-height-columns/equal-height-columns.css" />
-    <title>Online store</title>
+    <title>Orders</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -45,16 +45,15 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-text">{{ $product->price }}$</p>
-                            <p class="card-text">Left {{ $product->quantity }}</p>
-                            @if(session()->has('LoggedUserId'))
-                                <form action="{{ route('create.order') }}" method="post">
-                                    @csrf
-                                    <input type="text" name="quantity" placeholder="quantity">
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                    <input class="btn btn-primary" type="submit" value="Order">
-                                </form>
-                            @endif
+                            <p class="card-text">{{ $product->price }}</p>
+                            <p class="card-text">Ordered quantity {{ $product->quantity }}</p>
+                            <form action="{{ route('create.sale') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                                <input type="hidden" name="order_id" value="{{ $product->order_id }}">
+                                <input type="hidden" name="quantity" value="{{ $product->quantity }}">
+                                <input class="btn btn-primary" type="submit" value="Buy">
+                            </form>
                         </div>
                     </div>
                 </div>
