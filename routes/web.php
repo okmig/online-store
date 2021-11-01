@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderWebController;
+use App\Http\Controllers\SaleWebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +43,10 @@ Route::get('/user/profile', [ProfileController::class, 'profileShow'])->name('us
 Route::post('/user/contact/create/', [ProfileController::class, 'contactCreate'])->name('user.contact.create');
 Route::put('/user/contact/update/{id}', [ProfileController::class, 'contactUpdate'])->name('user.contact.update');
 Route::delete('/user/contact/delete/{id}', [ProfileController::class, 'contactDelete'])->name('user.contact.delete');
+
+Route::get('/', [IndexController::class, 'index']);
+
+Route::post('/create/order', [OrderWebController::class, 'orderCreate'])->name('create.order');
+Route::get('/user/orders', [OrderWebController::class, 'index'])->name('user.orders')->middleware('authCheck');
+
+Route::post('/create/sale', [SaleWebController::class, 'saleCreate'])->name('create.sale');

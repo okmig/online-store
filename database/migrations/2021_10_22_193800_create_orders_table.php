@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->boolean('status');
             $table->timestamps();
             $table->foreignId('customer_id')->nullable()->constrained('customers');
+            $table->foreignId('product_id')->nullable()->constrained('products');
         });
     }
 
